@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Devedor (models.Model):
 
@@ -39,7 +40,7 @@ class Devedor (models.Model):
                                              ('ACORDO ATIVO', 'ACORDO ATIVO'),
                                              ('NÃO ATUAR', 'NÃO ATUAR'),
                                              ))
-    user_agent = models.CharField('NEGOCIADOR', max_length=50, blank=False)
+    user_agent = models.ForeignKey(User, on_delete=models.CASCADE)
     cpc_status = models.CharField(max_length=20, blank=False, default='SIM',
                                    choices=(('SIM', 'SIM'),
                                     ('NÃO', 'NÃO')
@@ -53,9 +54,10 @@ class Devedor (models.Model):
                                     ('NÃO', 'NÃO')
                                     ))
     observacoes_status = models.TextField('Observações', max_length=500, blank=True)
+    
 
     class Meta:
-        db_table = 'cadastro'
+        db_table = 'cadastro_novo'
         ordering = ('id',)
 
     def __str__(self):
