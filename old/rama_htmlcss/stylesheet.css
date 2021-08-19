@@ -1,0 +1,20 @@
+.header,{ 20px, black, italic
+}
+
+.negociador_1, .negociador_2{
+    padding: 10px;
+    border-radius: 70px;
+    border-color: chocolate;
+    background-size: 150px 150px;
+}
+
+.body{
+    height: 200px;
+    background-color: gainsboro;
+
+}
+
+.text_information{
+    padding: 10px;
+    border-color: black;
+}
