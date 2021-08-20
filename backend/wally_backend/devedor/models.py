@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+
 class Debtor (models.Model):
 
     IdDebtor = models.AutoField(auto_created = True,
@@ -50,15 +51,17 @@ class Debtor (models.Model):
     data_alteracao = models.DateTimeField(auto_now=True)
     observacoes_status = models.TextField('Observações', max_length=500, blank=True)
 
-    cpc_status = models.CharField(max_length=20, blank=False, default='SIM',
-                                   choices=(('SIM', 'SIM'),
-                                    ('NÃO', 'NÃO')
-                                    ))
-    observacoes_status = models.TextField('Observações', max_length=500, blank=True)
+    def __str__(self):
+        return self.name
 
 
-    class Employees(models.Model):
-        name_employee = models.ForeignKey(User, on_delete=models.CASCADE)
+class Employees(models.Model):
+
+        EmployeeId = models.AutoField(auto_created = True,
+                          primary_key = True,
+                          serialize = False, 
+                          verbose_name ='ID')
+        name_employee = models.CharField(max_length=100, blank = False)
         departament =  models.CharField(max_length=20, blank=False, default='Varejo',
                                    choices=(('Varejo', 'Varejo'),
                                     ('BackOffice', 'BackOffice'),
