@@ -59,8 +59,9 @@ class Debtor (models.Model):
         return self.name
 
 
-    class Employees(models.Model):
-        name_employee = models.ForeignKey(User, on_delete=models.CASCADE)
+class Employees (models.Model):
+        EmployeeId = models.AutoField(primary_key=True, null=False)
+        name_employee = models.CharField(max_length=150, blank=False)
         departament =  models.CharField(max_length=20, blank=False, default='Varejo',
                                    choices=(('Varejo', 'Varejo'),
                                     ('BackOffice', 'BackOffice'),

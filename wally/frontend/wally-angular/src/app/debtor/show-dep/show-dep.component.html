@@ -1,0 +1,84 @@
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary float-right m-2" 
+data-toggle="modal" data-target="#exampleModal"
+(click)="addClick()"
+data-backdrop="static" data-keyboard="false"
+>
+    Adicionar Devedor
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+          <button type="button" class="close" 
+          data-dismiss="modal" aria-label="Close"
+          (click)="closeClick()" >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <app-add-edit-dep [dep]="dep" *ngIf="ActivateAddEditDepComp"></app-add-edit-dep>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Devedor</th>
+            <th>CPF/CPNJ</th>
+            <th>ID Espaider</th>
+            <th>Contábil</th>
+            <th>Risco</th>
+            <th>Carteira</th>
+            <th>Telefone Hot</th>
+            <th>Telefone</th>
+            <th>Telefone</th>
+            <th>WhatsApp</th>
+            <th>Status</th>
+            <th>Negociador</th>
+            <th>CPC</th>
+            <th>Atualizado em</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let dataItem of DebtorList">
+            <td>{{dataItem.IdDebtor}}</td>
+            <td>{{dataItem.name}}</td>
+            <td>{{dataItem.id_tax}}</td>
+            <td>{{dataItem.id_espaider}}</td>
+            <td>{{dataItem.contabil}}</td>
+            <td>{{dataItem.risco}}</td>
+            <td>{{dataItem.wallet_type}}</td>
+            <td>{{dataItem.phone_hot}}</td>
+            <td>{{dataItem.phone_1}}</td>
+            <td>{{dataItem.phone_2}}</td>
+            <td>{{dataItem.phone_whatsapp}}</td>
+            <td>{{dataItem.status_negociacao}}</td>
+            <td>{{dataItem.user_agent}}</td>
+            <td>{{dataItem.cpc_status}}</td>
+            <td>{{dataItem.data_alteracao}}</td>
+            <td>
+                <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#exampleModal"
+                (click)="editClick(dataItem)"
+                data-backdrop="static" data-keyboard="false">
+                Editar
+                </button>
+            </td>
+            
+
+        </tr>
+    </tbody>
+</table>

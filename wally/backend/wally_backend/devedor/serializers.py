@@ -1,7 +1,7 @@
 from django.db.models import fields
 from rest_framework import serializers
 
-from devedor.models import Debtor
+from devedor.models import Debtor, Employees
 
 class DebtorSerializer(serializers.ModelSerializer):
    class Meta:
@@ -21,11 +21,18 @@ class DebtorSerializer(serializers.ModelSerializer):
                 'status_negociacao',
                 'user_agent',
                 'cpc_status',
-                'data_registro',
                 'data_alteracao',
                 'observacoes_status',
-                'cpc_status',
-                'observacoes_status',
+       )
+
+class EmployeesSerializer(serializers.ModelSerializer):
+   class Meta:
+       model = Employees
+       fields = (
+                'EmployeeId',
+                'name_employee',
+                'departament',
+                'PhotoFilename',
        )
 
 
